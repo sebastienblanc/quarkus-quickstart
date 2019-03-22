@@ -2,23 +2,16 @@ package org.keycloak.quickstart;
 
 import org.eclipse.microprofile.jwt.Claim;
 import org.eclipse.microprofile.jwt.Claims;
-import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.json.JsonString;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import java.util.Optional;
 
 @Path("/username")
 public class UsernameResource {
-
-    @Inject
-    JsonWebToken jwt;
 
     @Inject
     @Claim(standard = Claims.preferred_username)
