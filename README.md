@@ -36,6 +36,53 @@ The flow is pretty simple :
 * In the accordeon menu go to `service call` and press the button
 * Next to `Service Call Result` you should see the result `TEST`
 
+## Focus on how the `smallrye-jwt` extension is used 
+
+The service receives a JWT Access Token from the `quarkus-front-end` application. To handle the JWT, we use the `smallrye-jwt` extension : 
+
+```xml
+ <dependency>
+  <groupId>io.quarkus</groupId>
+  <artifactId>quarkus-smallrye-jwt</artifactId>
+ </dependency>
+```
+
+Then, it just need some configuration, notice the `issuer` and the `publickey.location` properties : 
+
+```
+mp.jwt.verify.publickey.location=http://localhost:8180/auth/realms/quarkus-quickstart/protocol/openid-connect/certs
+mp.jwt.verify.issuer=http://localhost:8180/auth/realms/quarkus-quickstart
+quarkus.smallrye-jwt.auth-mechanism=MP-JWT
+quarkus.smallrye-jwt.enabled=true
+```
+Then in your JAXRS resource, you just need to add an annotation to your endpoint method : 
+
+```java
+@GET
+@RolesAllowed({"user"})
+public String getUsername() {
+```
+Also notice how easy it is to inject any claim of your token : 
+
+```java
+ @Inject
+ @Claim(standard = Claims.preferred_username)
+ Optional<JsonString> preferred_username;
+```
+To call the `quarkus-rest-caps` service we use the `quarkus-smallrye-rest-client` extension, notice the annotation `@RegisterClientHeaders`     
+
+```java
+@Path("/caps")
+@RegisterRestClient
+@RegisterClientHeaders
+public interface CapsService {
+```
+By doing this, we indicate that we want to propagate HTTP Headers from the JAXRS context. In our case, we want to propagate the `Authorization` header that contains our access token. 
+In the properties we specify this header : 
+
+```
+org.eclipse.microprofile.rest.client.propagateHeaders=Authorization
+```
 
  
 
