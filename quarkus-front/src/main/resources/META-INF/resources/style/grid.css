@@ -1,0 +1,38 @@
+* {box-sizing: border-box;}
+
+
+.wrapper > div {
+    border: 2px solid rgb(54, 54, 54);
+    border-radius: 5px;
+   
+    padding: 1em;
+    word-wrap: break-word;
+    font-size: 10px;
+
+}
+.wrapper {
+     display: grid;
+     height:75%;
+     grid-template-columns: 300px 400px 350px;
+     grid-gap: 10px;
+     grid-auto-rows: auto;
+ }
+
+.one {
+    grid-column: 1 ;
+    grid-row: 1 ;
+}
+.two {
+    grid-column: 2;
+    grid-row: 1 ;
+}
+.three {
+    grid-column: 3;
+    grid-row: 1 ;
+}
+
+pre.prettyprint {
+    border: none !important;
+    overflow: hidden;
+    text-align: -webkit-auto
+}
