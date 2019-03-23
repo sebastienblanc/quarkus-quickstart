@@ -84,5 +84,7 @@ In the properties we specify this header :
 org.eclipse.microprofile.rest.client.propagateHeaders=Authorization
 ```
 
+ ## Going Native
  
+ There is actually an [issue](https://github.com/quarkusio/quarkus/issues/1163) with the `jwt-extension` in Native Mode. The fix is planned for `0.13` and I will be update this section as soon as it will be fixed. 
 
