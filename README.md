@@ -28,7 +28,7 @@ The flow is pretty simple :
 
 ## Instructions
 
-* Import the Realm `quarkus-kc-quickstart.json` in your Keycloak Server
+* Import the Realm `quarkus-kc-quickstart.json` in your Keycloak Server (except if you are using the docker image from above)
 * Go to the `quarkus-front` folder and start the app : `mvn package quarkus:dev`
 * Go to the `quarkus-rest-username` folder and start the app : `mvn package quarkus:dev`
 * Go to the `quarkus-rest-caps` folder and start the app : `mvn package quarkus:dev`
