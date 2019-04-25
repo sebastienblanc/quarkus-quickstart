@@ -59,7 +59,8 @@ keycloak.onTokenExpired = function () {
 // Flow can be changed to 'implicit' or 'hybrid', but then client must enable implicit flow in admin console too
 var initOptions = {
     responseMode: 'fragment',
-    flow: 'standard'
+    flow: 'standard',
+    onload: 'check-sso'
 };
 
 function startTimer(duration, display) {

@@ -23,7 +23,7 @@ The flow is pretty simple :
 * A running instance of Keycloak 5.0.0 running on port 8180
   * If you have Docker you can also run your Keycloak Server like this : 
   ```
-  docker run -d --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8180:8180 -v `pwd`/quarkus-kc-quickstart.json:/config/quarkus-kc-quickstart.json -it jboss/keycloak:5.0.0 -b 0.0.0.0 -Djboss.http.port=8180 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/config/quarkus-kc-quickstart.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+  docker run -d --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8180:8180 -v `pwd`/quarkus-kc-quickstart.json:/config/quarkus-kc-quickstart.json -it jboss/keycloak:6.0.1 -b 0.0.0.0 -Djboss.http.port=8180 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/config/quarkus-kc-quickstart.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
   ```
 
 ## Instructions
@@ -87,8 +87,3 @@ In the properties we specify this header :
 ```
 org.eclipse.microprofile.rest.client.propagateHeaders=Authorization
 ```
-
- ## Going Native
- 
- There is actually an [issue](https://github.com/quarkusio/quarkus/issues/1163) with the `jwt-extension` in Native Mode. The fix is planned for `0.13` and I will be update this section as soon as it will be fixed. 
-
